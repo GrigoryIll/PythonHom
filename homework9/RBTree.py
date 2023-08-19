@@ -43,9 +43,9 @@ class RedBlackTree:
         if new_node.parent.parent is None:
             return
 
-        self.fix_violations(new_node)
+        self.rebalanse(new_node)
 
-    def fix_violations(self, node):
+    def rebalanse(self, node):
         while node.parent.color == "RED":
             if node.parent == node.parent.parent.left:
                 uncle_node = node.parent.parent.right
