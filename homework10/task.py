@@ -44,6 +44,6 @@ except ValueError as e:
 
 try:
     with open(first_name, "a") as file:
-        print(f"<{first_name}><{last_name}><{third_name}>{tel}", file=file)
+        print(f"<{first_name}><{last_name}><{third_name}><{tel}>", file=file)
 except IOError as e:
     print("Не удается записать файл!")
