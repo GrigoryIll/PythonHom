@@ -6,6 +6,7 @@ class Node:
         self.parent = None
         self.color = "RED"
 
+
 class RedBlackTree:
     def __init__(self):
         self.nil = Node(None)
@@ -59,7 +60,7 @@ class RedBlackTree:
                     if node == node.parent.right:
                         node = node.parent
                         self.rotate_left(node)
-                    
+
                     node.parent.color = "BLACK"
                     node.parent.parent.color = "RED"
                     self.rotate_right(node.parent.parent)
@@ -75,7 +76,7 @@ class RedBlackTree:
                     if node == node.parent.left:
                         node = node.parent
                         self.rotate_right(node)
-                    
+
                     node.parent.color = "BLACK"
                     node.parent.parent.color = "RED"
                     self.rotate_left(node.parent.parent)
