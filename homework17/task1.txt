@@ -1,0 +1,156 @@
+openapi: 3.0.0
+info:
+  title: Аренда ресурсов в облачном сервисе
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080/api/v1/
+    description: Dev servers
+paths:
+  /clouds:
+    get:
+      summary: Метод получения списка ресурсов на облако
+      tags:
+        - Clouds
+      operationId: getAllClouds
+      responses: 
+        "200":
+          description: Успешный ответ на запрос
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Clouds"
+        "default":
+          description: Всё остальное
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Создание заказа на облако
+      tags:
+        - Clouds
+      operationId: createCloud
+      requestBody:
+        content:
+          aplication/json:
+            schema:
+              $ref: "#/components/schemas/Cloud"
+      responses:
+        "200":
+          description: Успешный ответ
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Clouds"
+        "default":
+          description: Всё остальное
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /cloud/{cloudId}:
+    delete:
+      summary: Отмена заказа по ID
+      tags:
+        - Clouds
+      operationId: canselCloudByID
+      parameters:
+        - name: cloudId
+          in: path
+          required: true
+          description: Id заказа на облако
+          schema:
+            type: string
+          example: f1234j5678
+      responses:
+        "200":
+          description: Отмена прошла успешно
+          content:
+            aplication/json: {}
+        "default":
+          description: Всё остальное
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Обновление параметров для заказанного облака по его ID
+      tags:
+        - Clouds
+      operationId: updateOrderedCloudbyID
+      parameters:
+        - name: cloudId
+          in: path
+          required: true
+          description: Id заказа на облако
+          schema:
+            type: string
+          example: f1234j5678
+      requestBody: 
+        description: JSON c обновленной информацией
+        required: true
+        content:
+          aplication/json:
+            schema:
+              $ref: "#/components/schemas/Cloud"
+      responses:
+        "200":
+          description: Обновление прошло успешно
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Cloud"
+        "default":
+          description: Всё остальное
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Cloud:
+      type: object
+      required:
+        - id_client
+        - OS
+        - RAM
+        - CPU
+        - SSD
+      properties:
+        cloudId:
+          type: string
+          example: f1234j5678
+        clientId:
+          type: string
+          example: f1234j5678
+        OS:
+          type: string
+          enum:
+            - Linux
+            - Windows
+        RAM:
+          type: string
+          example: 256
+        CPU:
+          type: string
+          example: 4
+        SSD:
+          type: string
+          example: 1024
+    Clouds:
+      type: array
+      items:
+        $ref: "#/components/schemas/Cloud"
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+      
+
+
