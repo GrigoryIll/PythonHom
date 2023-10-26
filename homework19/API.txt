@@ -1,0 +1,407 @@
+openapi: 3.0.0
+info:
+  title: Робот-пылесос
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080/api/v1/
+    description: Dev servers
+paths:
+  /robots:
+    get:
+      summary: Получение списка роботов
+      tags:
+        - Robots
+      operationId: getAllRobots
+      responses: 
+        "200":
+          description: Успешный ответ на запрос
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Robots"
+        "default":
+          description: Всё остальное
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Добавление робота
+      tags:
+        - Robots
+      operationId: addRobot
+      requestBody:
+        content:
+          aplication/json:
+            schema:
+              $ref: "#/components/schemas/Robot"
+      responses:
+        "200":
+          description: Успешный ответ
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Robots"
+        "default":
+          description: Всё остальное
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /robot/{id}:
+    delete:
+      summary: Удаление робота по ID
+      tags:
+        - Robots
+      operationId: deleteRobotByID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id робота
+          schema:
+            type: string
+          example: "Aa"
+      responses:
+        "200":
+          description: Удаление прошло успешно
+          content:
+            aplication/json: {}
+        "default":
+          description: Всё остальное
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Обновление параметров робота по Id
+      tags:
+        - Robots
+      operationId: updateRobotByID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id робота
+          schema:
+            type: string
+          example: "Aa"
+      requestBody: 
+        description: JSON c обновленной информацией
+        required: true
+        content:
+          aplication/json:
+            schema:
+              $ref: "#/components/schemas/Robot"
+      responses:
+        "200":
+          description: Обновление прошло успешно
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Robot"
+        "default":
+          description: Всё остальное
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /users:
+    get:
+      summary: Получение списка юзеров
+      tags:
+        - Users
+      operationId: getAllUseres
+      responses: 
+        "200":
+          description: Успешный ответ на запрос
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Users"
+        "default":
+          description: Всё остальное
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Добавление юзера
+      tags:
+        - Users
+      operationId: addUser
+      requestBody:
+        content:
+          aplication/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: Успешный ответ
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Users"
+        "default":
+          description: Всё остальное
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /user/{id}:
+    delete:
+      summary: Удаление юзера по ID
+      tags:
+        - Users
+      operationId: deleteUserByID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id юзера
+          schema:
+            type: string
+          example: "Aa"
+      responses:
+        "200":
+          description: Удаление прошло успешно
+          content:
+            aplication/json: {}
+        "default":
+          description: Всё остальное
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Обновление параметров юзера по Id
+      tags:
+        - Users
+      operationId: updateUserByID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id юзера
+          schema:
+            type: string
+          example: "Aa"
+      requestBody: 
+        description: JSON c обновленной информацией
+        required: true
+        content:
+          aplication/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: Обновление прошло успешно
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "default":
+          description: Всё остальное
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /groups:
+    get:
+      summary: Получение списка групп
+      tags:
+        - Groups
+      operationId: getAllGroups
+      responses: 
+        "200":
+          description: Успешный ответ на запрос
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Groups"
+        "default":
+          description: Всё остальное
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Добавление группы
+      tags:
+        - Groups
+      operationId: addGroup
+      requestBody:
+        content:
+          aplication/json:
+            schema:
+              $ref: "#/components/schemas/Group"
+      responses:
+        "200":
+          description: Успешный ответ
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Groups"
+        "default":
+          description: Всё остальное
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /group/{id}:
+    delete:
+      summary: Удаление группы по ID
+      tags:
+        - Groups
+      operationId: deleteGroupByID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id группы
+          schema:
+            type: string
+          example: "Aa"
+      responses:
+        "200":
+          description: Удаление прошло успешно
+          content:
+            aplication/json: {}
+        "default":
+          description: Всё остальное
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Обновление параметров группы по Id
+      tags:
+        - Groups
+      operationId: updateGroupByID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id группы
+          schema:
+            type: string
+          example: "Aa"
+      requestBody: 
+        description: JSON c обновленной информацией
+        required: true
+        content:
+          aplication/json:
+            schema:
+              $ref: "#/components/schemas/Group"
+      responses:
+        "200":
+          description: Обновление прошло успешно
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Group"
+        "default":
+          description: Всё остальное
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Robot:
+      type: object
+      required:
+        - id
+        - model
+        - version
+        - status
+        - resource
+        - fabric_name
+        - ip_adress
+        - id_group
+      properties:
+        id:
+          type: integer
+          example: 1
+        model:
+          type: string
+          example: "Aa"
+        version:
+          type: string
+          example: "1.2"
+        status:
+          type: string
+          example: "worked"
+        resource:
+          type: integer
+          example: 40
+        fabric_name:
+          type: string
+          example: "Xiaomi"
+        ip_adress:
+          type: string
+          example: "192.168.0.0"
+        id_group:
+          type: integer
+          example: 1
+    User:
+      type: object
+      required:
+        - id
+        - login
+        - password
+      properties:
+        id:
+          type: integer
+          example: 1
+        login: 
+          type: string
+          example: "Aa"
+        password:
+          type: string
+          example: "Aa"
+    Group:
+      type: object
+      required:
+       - id
+       - idUser1
+       - idUser2
+       - idUser3
+      properties:
+        id:
+          type: integer
+          example: 1
+        idUser1:
+          type: object
+          items:
+            $ref: "#/components/schemas/User/properties/id"
+        idUser2:
+          type: object
+          items:
+            $ref: "#/components/schemas/User/properties/id"
+        idUser3:
+          type: object
+          items:
+            $ref: "#/components/schemas/User/properties/id"
+    Robots:
+      type: array
+      items:
+        $ref: "#/components/schemas/Robot"
+    Users:
+      type: array
+      items:
+        $ref: "#/components/schemas/User"
+    Groups:
+      type: array
+      items:
+        $ref: "#/components/schemas/Group"
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
