@@ -29,11 +29,11 @@ class Car(Vehicle):
         self.speed = speed
 
 
-car1 = Car("Toyota", "Camry", "2020")
+# car1 = Car("Toyota", "Camry", "2020")
 
 # print(car1.speed)
-car1.testDrive()
-print(car1.speed)
+# car1.testDrive()
+# print(car1.speed)
 # car1.park()
 # print(car1.speed)
 #
