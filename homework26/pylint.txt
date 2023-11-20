@@ -1,0 +1,15 @@
+$ pylint main.py 
+************* Module main
+main.py:5:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+
+------------------------------------------------------------------
+Your code has been rated at 9.58/10 (previous run: 9.58/10, +0.00)
+
+
+
+
+
+$ pylint test_main.py 
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
