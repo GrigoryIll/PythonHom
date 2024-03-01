@@ -23,7 +23,6 @@ class Name:
 class Student:
     name = Name()
 
-    #"""Логгер-декоратор"""
     def log_decorator(func):
         """Логгер-декоратор"""
 
@@ -105,7 +104,7 @@ class Student:
         average = sum(nums)/len(nums)
         return f" Средняя оценка студента {self.name} : {average}"
     
-#парсер для командной строки
+
 def parser():
     """парсер для командной строки"""
 
