@@ -1,7 +1,6 @@
 import csv
 import argparse
 import logging
-import pytest
 
 class Name:
 
