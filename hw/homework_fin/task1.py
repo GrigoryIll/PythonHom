@@ -24,6 +24,8 @@ class Student:
     name = Name()
 
     def log_decorator(func):
+        """Логгер-декоратор"""
+
         def wrapper(*args, **kwargs):
             logging.basicConfig(filename='logs.log', encoding='utf-8', level=logging.NOTSET)
             res = func(*args, **kwargs)
@@ -104,6 +106,8 @@ class Student:
     
   
 def parser():
+    """парсер для командной строки"""
+
     parser = argparse.ArgumentParser(description='Argument parser')
     parser.add_argument('-f', '--csv_file', type=str, default=r"E:\Users\Grigory\Documents\PyHomeworks\hw\homework_fin\subjects.csv", help='export csv file')
     args = parser.parse_args()
