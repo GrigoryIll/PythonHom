@@ -2,5 +2,8 @@ hi
 hi2
 hi3
 Add line
+<<<<<<< HEAD
 Add line
+=======
+>>>>>>> 5baa144b305d45ba4c8ec038b5434165d842eb84
 new line
