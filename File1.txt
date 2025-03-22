@@ -6,3 +6,4 @@ Add line
 Add line
 new line
 er line
+test conflict
